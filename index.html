@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ur">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nokia C3 Predictor</title>
+<style>
+body {
+  background:#101827;
+  color:white;
+  font-family:Arial,sans-serif;
+  text-align:center;
+  padding:20px;
+}
+.box {
+  background:#1e293b;
+  padding:25px;
+  border-radius:16px;
+  margin-top:35px;
+}
+h1 {color:#38bdf8;}
+button {
+  background:#0d9488;
+  color:white;
+  border:0;
+  padding:16px 30px;
+  border-radius:10px;
+  font-size:18px;
+}
+#timer {font-size:55px;color:#facc15;}
+#result {font-size:20px;margin-top:20px;}
+</style>
+</head>
+<body>
+<h1>NOKIA C3</h1>
+<h2>Dragon Tiger Research</h2>
+<div class="box">
+  <h3>14 Second Round Analysis</h3>
+  <div id="timer">14</div>
+  <button onclick="startAnalysis()">START ANALYSIS</button>
+  <div id="result">تیار ہے۔</div>
+</div>
+<script>
+let running = false;
+function startAnalysis() {
+  if(running) return;
+  running = true;
+  let count = 14;
+  document.getElementById("result").innerText =
+    "راؤنڈ کا مشاہدہ جاری ہے...";
+  document.getElementById("timer").innerText = count;
+  let clock = setInterval(() => {
+    count--;
+    document.getElementById("timer").innerText = count;
+    if(count <= 0) {
+      clearInterval(clock);
+      document.getElementById("result").innerText =
+        "تجزیہ مکمل۔ اگلا نتیجہ قابلِ اعتماد طور پر معلوم نہیں کیا جا سکتا۔";
+      running = false;
+    }
+  },1000);
+}
+</script>
+</body>
+</html>
